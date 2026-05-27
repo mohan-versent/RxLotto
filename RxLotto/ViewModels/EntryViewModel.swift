@@ -49,6 +49,7 @@ class EntryViewModel {
         let parsed: Observable<[Int]> = entryText
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
+            .filter { !$0.isEmpty }  // don't process empty input — lets startWith message stay visible
             .map { text in
                 // Split by comma or space, parse each token to Int, drop nils
                 text.components(separatedBy: CharacterSet(charactersIn: ", "))
