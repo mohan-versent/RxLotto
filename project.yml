@@ -1,0 +1,41 @@
+name: RxLotto
+options:
+  bundleIdPrefix: com.brightmohan
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15"
+
+packages:
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    exactVersion: "6.5.0"
+
+targets:
+  RxLotto:
+    type: application
+    platform: iOS
+    sources: [RxLotto]
+    dependencies:
+      - package: RxSwift
+        product: RxSwift
+      - package: RxSwift
+        product: RxCocoa
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        INFOPLIST_FILE: RxLotto/Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.brightmohan.RxLotto
+
+  RxLottoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [RxLottoTests]
+    dependencies:
+      - target: RxLotto
+      - package: RxSwift
+        product: RxSwift
+      - package: RxSwift
+        product: RxTest
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
