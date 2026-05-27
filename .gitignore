@@ -1,0 +1,10 @@
+# Xcode
+*.xcuserstate
+xcuserdata/
+DerivedData/
+*.xccheckout
+
+# macOS
+.DS_Store
+
+# SPM resolved (keep Package.resolved so CI gets exact versions)
